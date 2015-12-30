@@ -1,13 +1,16 @@
 ﻿<Window x:Class="configvpcs.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:xx="clr-namespace:configvpcs"
+        
     Title="Window1" Height="300" Width="536" >
 
     <Window.Resources>
-        <Image x:Key="MyImage" Source="\images\eye.png"/>        
+        <Image x:Key="EyeImage" Source="images\eye.png"/>        
     </Window.Resources>
     
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="100" Name="TopLine" />
             <RowDefinition Height="*" />
@@ -15,6 +18,19 @@
         
         <Border Background="Beige" BorderBrush="Azure" BorderThickness="2" Grid.Row="0">
             <WrapPanel  Name="Sections" Orientation="Horizontal" HorizontalAlignment="Left">
+                <WrapPanel.Resources>
+                    <ControlTemplate x:Key="TopButtonTpl" TargetType="CheckBox">
+                        <Border Width="75" 
+                                Height="25"                                 
+                                Background="AliceBlue" BorderThickness="1" 
+                                BorderBrush="Blue">
+                        <CheckBox VerticalAlignment="Center"
+                                Content="{TemplateBinding Content}" 
+                         />
+                        </Border>
+                    </ControlTemplate>
+                </WrapPanel.Resources>
+                <CheckBox Template="{StaticResource TopButtonTpl}" />
             </WrapPanel>
         </Border>
 
@@ -25,16 +41,24 @@
                 <ColumnDefinition Name="Right" Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Name="gridSplitter1" />        
-            <ListBox Name="ListDir" Grid.Column="0" DataContext="{Binding listdir}" ItemsSource="{Binding listdir}" >
+            <ListBox Name="ListDir" 
+                     Grid.Column="0" 
+                      ItemsSource="{Binding listdir}" >
                 <ListBox.ItemTemplate>
-                    <DataTemplate >
+                    <DataTemplate DataType="{x:Type xx:RepItem}">
                         <Border  Background="LightGray" CornerRadius="2" BorderBrush="BlueViolet" BorderThickness="2">
                         <StackPanel  Orientation="Horizontal" Height="40" >
-                            <CheckBox Checked="btnShowSelectedItem_Click" VerticalAlignment="Center" IsChecked="{Binding Checked}"></CheckBox>
-                            <Button Name="btnSeeContent" 
-                                    Click="btnShowSelectedItem_Click"                                     
-                                    Content="{StaticResource MyImage}"/>                                                                    
+                            <CheckBox Checked="btnShowSelectedItem_Click" Unchecked="btnShowSelectedItem_Click"  VerticalAlignment="Center" IsChecked="{Binding Checked}"></CheckBox>
+                                <Button 
+                                    x:Name="btnSeeContent" 
+                                    Click="btnShowSelectedItem_Click" 
+                                     Width="60" >
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="images\eye.png" />
+                                    </Button.Background>
+                                 </Button>
                             <TextBlock Text="{Binding Algo}" VerticalAlignment="Center" />
+                                
                             <Rectangle Width="10" />
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{Binding RepName}" />

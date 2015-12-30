@@ -10,3 +10,5 @@ D:\essais\configvpcs\configvpcs\obj\Debug\configvpcs.Properties.Resources.resour
 D:\essais\configvpcs\configvpcs\obj\Debug\configvpcs.csproj.GenerateResource.Cache
 D:\essais\configvpcs\configvpcs\obj\Debug\configvpcs.exe
 D:\essais\configvpcs\configvpcs\obj\Debug\configvpcs.pdb
+D:\essais\configvpcs\configvpcs\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\essais\configvpcs\configvpcs\obj\Debug\configvpcs_MarkupCompile.lref

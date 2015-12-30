@@ -23,31 +23,6 @@ namespace configvpcs
 {
   
 
-    //classe pour methode d'extension de stringbuilder
-    public static class StringBuilderExtension
-    {
-        public static String[] ZeroSplit(this StringBuilder input)
-        {
-            List<String> results = new List<String>();
-
-            StringBuilder current = new StringBuilder();
-            for (int i = 0; i < input.Length; ++i)
-            {
-                if (input[i] == '\0')
-                {
-                    results.Add(current.ToString());
-                    current = new StringBuilder();
-                }
-                else
-                    current.Append(input[i].ToString());
-            }
-
-            if (current.Length > 0)
-                results.Add(current.ToString());
-
-            return results.ToArray();
-        }
-    }
 
     /// <summary>
     /// Interaction logic for Window1.xaml
@@ -142,7 +117,6 @@ namespace configvpcs
        
             string[] Sections = listsections(nomfich);
 
-            LaBase.Clear();
             
             foreach (string section in Sections)
             {
@@ -200,8 +174,12 @@ namespace configvpcs
         private void InitBase()
         {
             String dirPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+          
+            LaBase.Clear();
+          
             foreach (RepItem item in listdir)
             {
+          
                 if (item.Checked)
                 {
                     scandir(dirPath + @"\viewpointls\viewpointcoresystem\" + item.RepName, item.Num);
@@ -219,11 +197,12 @@ namespace configvpcs
                               .ToDictionary(grp => grp.Key, grp => grp.ToList());
 
             this.Sections.Children.Clear();
+            ControlTemplate Butttemplate = this.Sections.FindResource("TopButtonTpl") as ControlTemplate;
             foreach (string value in query.Keys.ToList())
             {
-                Button LeButton = new Button();
+                CheckBox LeButton = new CheckBox();
+                LeButton.Template = Butttemplate;
                 LeButton.Content = value;
-                LeButton.Width = 40;
                 this.Sections.Children.Add(LeButton);
             }
             
@@ -231,4 +210,32 @@ namespace configvpcs
 
 
     }
+
+    //classe pour methode d'extension de stringbuilder
+    public static class StringBuilderExtension
+    {
+        public static String[] ZeroSplit(this StringBuilder input)
+        {
+            List<String> results = new List<String>();
+
+            StringBuilder current = new StringBuilder();
+            for (int i = 0; i < input.Length; ++i)
+            {
+                if (input[i] == '\0')
+                {
+                    results.Add(current.ToString());
+                    current = new StringBuilder();
+                }
+                else
+                    current.Append(input[i].ToString());
+            }
+
+            if (current.Length > 0)
+                results.Add(current.ToString());
+
+            return results.ToArray();
+        }
+    }
+
+
 }
