@@ -1,0 +1,12 @@
+D:\essais\configvpcs\configvpcs\bin\Debug\configvpcs.exe
+D:\essais\configvpcs\configvpcs\bin\Debug\configvpcs.pdb
+D:\essais\configvpcs\configvpcs\obj\Debug\ResolveAssemblyReference.cache
+D:\essais\configvpcs\configvpcs\obj\Debug\Window1.baml
+D:\essais\configvpcs\configvpcs\obj\Debug\Window1.g.cs
+D:\essais\configvpcs\configvpcs\obj\Debug\App.g.cs
+D:\essais\configvpcs\configvpcs\obj\Debug\configvpcs_MarkupCompile.cache
+D:\essais\configvpcs\configvpcs\obj\Debug\configvpcs.g.resources
+D:\essais\configvpcs\configvpcs\obj\Debug\configvpcs.Properties.Resources.resources
+D:\essais\configvpcs\configvpcs\obj\Debug\configvpcs.csproj.GenerateResource.Cache
+D:\essais\configvpcs\configvpcs\obj\Debug\configvpcs.exe
+D:\essais\configvpcs\configvpcs\obj\Debug\configvpcs.pdb

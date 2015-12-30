@@ -1,0 +1,4 @@
+#
+**/obj #ignore any directory obj
+
+*.obj #ignore any obj file
